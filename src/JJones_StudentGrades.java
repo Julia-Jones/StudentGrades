@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -7,14 +8,18 @@ import java.util.ArrayList;
  * and open the template in the editor.
  */
 
+
 /**
  *
  * @author R
  */
 public class JJones_StudentGrades extends javax.swing.JFrame {
 
+    //list of students
      ArrayList <String> name = new ArrayList();
-     ArrayList <String> numb = new ArrayList();
+     ArrayList <String> marks = new ArrayList();
+  
+     ArrayList <ArrayList<String>> myList = new ArrayList <ArrayList <String>> ();
     /**
      * Creates new form JJones_StudentGrades
      */
@@ -51,6 +56,7 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Output1 = new javax.swing.JTextArea();
         exit = new javax.swing.JButton();
+        Output2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +83,11 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
         });
 
         List.setText("List");
+        List.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListActionPerformed(evt);
+            }
+        });
 
         studentav.setText("Student Average");
         studentav.addActionListener(new java.awt.event.ActionListener() {
@@ -114,27 +125,6 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(input6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,8 +143,33 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(courseav)
                         .addGap(37, 37, 37)
-                        .addComponent(exit)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(input6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Output2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,25 +189,27 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(input5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(input6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
+                .addComponent(Output2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentav)
                     .addComponent(courseav)
                     .addComponent(exit))
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
 
         pack();
@@ -214,24 +231,93 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
-        String first;
-        String last;
+        //declaring the 2-dimensional array
+        String[][] student = new String[15][5]; 
+        //creating veriables for the names to be entered and grouped together
+       String first  = input1.getText();
+       String last = input2.getText();
+       String temp = first + " " + last;
+       
+       //creating varibales for the test marks to be stored in
+       String test1 = input3.getText();
+       String test2 = input4.getText();
+       String test3 = input5.getText();
+       String test4 = input6.getText();
+       
+       //adding the names or marks that are entered
+       ArrayList<String> row = new ArrayList<String>();
+       row.add(temp);
+       row.add(test1);
+       row.add(test2);
+       row.add(test3);
+       row.add(test4);
+       myList.add(row);
+       
+      
+          int studentnumber= 0; 
+        for(int x=0; x<15; x++){
+//            temp = [x][0];
+            name.add(temp); 
+            studentnumber++;
+        }
         
-        String mark1;
-        String mark2;
-        String mark3;
-        String mark4;
         
-        first = input1.getText();
-        last= input2.getText();
-        mark1= input3.getText();
-        mark2= input4.getText();
-        mark3= input5.getText();
-        mark4= input6.getText();
-        
-        name.add(first,last);
-        numb.add(mark1,mark2,mark3,mark4);
+        for(int x = 0; x<14; x++){
+         for(int y = 1; y<5; y++){
+             int[][] marks = new int[x][y];
+         }
+        }          
+        myList.add(name);
+        myList.add(marks);
+
+//       for (int row = 0; row <= 2; row++) {
+//          for( int col=0; col <= 1; col++) {
+//               break;
+//           }
+//     } 
     }//GEN-LAST:event_addActionPerformed
+
+    private void ListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListActionPerformed
+        // TODO add your handling code here:
+         //creating varables
+        String a;
+        String temp="";
+        
+        
+        //goes through and enters each number on a new line
+        Iterator stepper = name.iterator();
+//        Iterator is used to go through a collection, in this case, an ArrayList
+        for (int i=0;i<name.size();i++){
+            a = (String) stepper.next();
+            temp = temp + a +"\n";
+        }
+        Output1.setText(temp);
+        
+        for(ArrayList<String> r : myList){
+           for(int i =0; i<r.size(); i++){
+           Output1.setText(r.get(i) + "\n");
+       }
+           
+       }
+        
+        String test;
+        String test1= "";
+        String test2 = "";
+        String test3 = "";
+        String test4 = ""; 
+// goes through and enters each number on a new line
+        marks.iterator();
+        //Iterator is used to go through a collection, in this case, an ArrayList
+        for (int i=0;i<marks.size();i++){
+            a = (String) stepper.next();
+            test1 =  test1 + a +"\n";
+            test2 = test2 + a +"\n";
+            test3 = test3 + a +"\n";
+            test4 = test4 + a +"\n";
+        }
+        Output1.setText(test2);
+        
+    }//GEN-LAST:event_ListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,6 +357,7 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton List;
     private javax.swing.JTextArea Output1;
+    private javax.swing.JTextField Output2;
     private javax.swing.JButton add;
     private javax.swing.JButton courseav;
     private javax.swing.JButton exit;
