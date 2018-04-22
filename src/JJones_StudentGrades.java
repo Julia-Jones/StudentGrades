@@ -15,11 +15,12 @@ import java.util.Iterator;
  */
 public class JJones_StudentGrades extends javax.swing.JFrame {
 
-    //list of students
-     ArrayList <String> name = new ArrayList();
-     ArrayList <String> marks = new ArrayList();
-  
-     ArrayList <ArrayList<String>> myList = new ArrayList <ArrayList <String>> ();
+    
+    ArrayList <String> list = new ArrayList();
+    //creating array for the marks and names to be entered
+    String [][] people = new String [15][5];
+    //starting students at 0 to create a veriable to monitor where the new data is entered into the array 
+    int students = 0;
     /**
      * Creates new form JJones_StudentGrades
      */
@@ -51,8 +52,8 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
         input6 = new javax.swing.JTextField();
         add = new javax.swing.JButton();
         List = new javax.swing.JButton();
-        studentav = new javax.swing.JButton();
-        courseav = new javax.swing.JButton();
+        StudentAverage = new javax.swing.JButton();
+        CourseAverage = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Output1 = new javax.swing.JTextArea();
         exit = new javax.swing.JButton();
@@ -89,20 +90,21 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
             }
         });
 
-        studentav.setText("Student Average");
-        studentav.addActionListener(new java.awt.event.ActionListener() {
+        StudentAverage.setText("Student Average");
+        StudentAverage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentavActionPerformed(evt);
+                StudentAverageActionPerformed(evt);
             }
         });
 
-        courseav.setText("Course Average");
-        courseav.addActionListener(new java.awt.event.ActionListener() {
+        CourseAverage.setText("Course Average");
+        CourseAverage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseavActionPerformed(evt);
+                CourseAverageActionPerformed(evt);
             }
         });
 
+        Output1.setEditable(false);
         Output1.setColumns(20);
         Output1.setRows(5);
         jScrollPane1.setViewportView(Output1);
@@ -113,6 +115,8 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
+
+        Output2.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,9 +143,9 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
                         .addComponent(List))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(studentav)
+                        .addComponent(StudentAverage)
                         .addGap(30, 30, 30)
-                        .addComponent(courseav)
+                        .addComponent(CourseAverage)
                         .addGap(37, 37, 37)
                         .addComponent(exit))
                     .addGroup(layout.createSequentialGroup()
@@ -206,8 +210,8 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
                 .addComponent(Output2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(studentav)
-                    .addComponent(courseav)
+                    .addComponent(StudentAverage)
+                    .addComponent(CourseAverage)
                     .addComponent(exit))
                 .addContainerGap())
         );
@@ -215,14 +219,50 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void studentavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentavActionPerformed
-        // TODO add your handling code here:
+    private void StudentAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentAverageActionPerformed
+               //varibale is equal and starts at 0
+        int sum= 0;
+        int total = 0;
+        String name = input1.getText() + " " + input2.getText();
         
-    }//GEN-LAST:event_studentavActionPerformed
+        //for loop to grab each individual integer that is entered and listed
+        for(int i=1; i< 5; i++){
+            int n = Integer.parseInt(list.get(i));
+            //Adds all the marks numbers and dividing by 4
+              total = (sum += n)/4;
+      }
+        //output the total of all the odd numbers entered 
+        Output2.setText( name + " has an average of " + total + ".");
+          
+        
+    }//GEN-LAST:event_StudentAverageActionPerformed
 
-    private void courseavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseavActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_courseavActionPerformed
+    private void CourseAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseAverageActionPerformed
+        
+        //test 1 
+//        //varibale is equal and starts at 0
+        int sum= 0;
+        int total = 0;
+//        //for loop to grab each individual integer that is entered and listed
+        
+        
+     for(int r=0; r<students +1; r++){
+      for(int i =1; i<2; i++){
+           int n = Integer.parseInt(list.get(i));           
+             //Adds all the numbers and divides by the number of students entered
+               sum = sum += n;
+                 total = sum /2;
+       }
+     }
+     
+       for(int col = 0; col <=3; col++){
+           int test = Integer.parseInt(people);
+            sum += list[col][1];
+       }
+        //output the total of all the averages 
+        Output2.setText( "Test 1: " + total + ".");
+        
+    }//GEN-LAST:event_CourseAverageActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
@@ -231,91 +271,46 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
-        //declaring the 2-dimensional array
-        String[][] student = new String[15][5]; 
-        //creating veriables for the names to be entered and grouped together
-       String first  = input1.getText();
-       String last = input2.getText();
-       String temp = first + " " + last;
-       
-       //creating varibales for the test marks to be stored in
-       String test1 = input3.getText();
-       String test2 = input4.getText();
-       String test3 = input5.getText();
-       String test4 = input6.getText();
-       
-       //adding the names or marks that are entered
-       ArrayList<String> row = new ArrayList<String>();
-       row.add(temp);
-       row.add(test1);
-       row.add(test2);
-       row.add(test3);
-       row.add(test4);
-       myList.add(row);
-       
-      
-          int studentnumber= 0; 
-        for(int x=0; x<15; x++){
-//            temp = [x][0];
-            name.add(temp); 
-            studentnumber++;
+        
+        if(students >= 15){
+            return;
         }
         
-        
-        for(int x = 0; x<14; x++){
-         for(int y = 1; y<5; y++){
-             int[][] marks = new int[x][y];
-         }
-        }          
-        myList.add(name);
-        myList.add(marks);
+        //creating varibles for the names of each student 
 
-//       for (int row = 0; row <= 2; row++) {
-//          for( int col=0; col <= 1; col++) {
-//               break;
-//           }
-//     } 
+        //making sure the combindes names of each student will be added into the array in 
+        //column 0 with the next availabile row at students
+       people[students][0] = input1.getText() + " " + input2.getText();
+       String name = input1.getText() + " " + input2.getText();
+       //this will make sure that all the test marks will be entered into columns 1,2,3 and 4
+       people[students][1] = input3.getText();
+       people[students][2] = input4.getText();
+       people[students][3] = input5.getText();
+       people[students][4] = input6.getText();
+       
+       //adding them to the array
+       list.add(people[students][0]);
+       list.add(people[students][1]);
+       list.add(people[students][2]);
+       list.add(people[students][3]);
+       list.add(people[students][4]);
+       
     }//GEN-LAST:event_addActionPerformed
 
     private void ListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListActionPerformed
         // TODO add your handling code here:
-         //creating varables
-        String a;
-        String temp="";
-        
+         String a;
+         String temp= " ";
         
         //goes through and enters each number on a new line
-        Iterator stepper = name.iterator();
-//        Iterator is used to go through a collection, in this case, an ArrayList
-        for (int i=0;i<name.size();i++){
+        Iterator stepper = list.iterator();
+        //Iterator is used to go through a collection, in this case, an ArrayList
+        for (int i=0;i<list.size();i++){
             a = (String) stepper.next();
             temp = temp + a +"\n";
         }
         Output1.setText(temp);
         
-        for(ArrayList<String> r : myList){
-           for(int i =0; i<r.size(); i++){
-           Output1.setText(r.get(i) + "\n");
-       }
-           
-       }
-        
-        String test;
-        String test1= "";
-        String test2 = "";
-        String test3 = "";
-        String test4 = ""; 
-// goes through and enters each number on a new line
-        marks.iterator();
-        //Iterator is used to go through a collection, in this case, an ArrayList
-        for (int i=0;i<marks.size();i++){
-            a = (String) stepper.next();
-            test1 =  test1 + a +"\n";
-            test2 = test2 + a +"\n";
-            test3 = test3 + a +"\n";
-            test4 = test4 + a +"\n";
-        }
-        Output1.setText(test2);
         
     }//GEN-LAST:event_ListActionPerformed
 
@@ -355,11 +350,12 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CourseAverage;
     private javax.swing.JButton List;
     private javax.swing.JTextArea Output1;
     private javax.swing.JTextField Output2;
+    private javax.swing.JButton StudentAverage;
     private javax.swing.JButton add;
-    private javax.swing.JButton courseav;
     private javax.swing.JButton exit;
     private javax.swing.JTextField input1;
     private javax.swing.JTextField input2;
@@ -375,6 +371,5 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton studentav;
     // End of variables declaration//GEN-END:variables
 }
