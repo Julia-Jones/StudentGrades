@@ -15,7 +15,6 @@ import java.util.Iterator;
  */
 public class JJones_StudentGrades extends javax.swing.JFrame {
 
-    
     ArrayList <String> list = new ArrayList();
     //creating array for the marks and names to be entered
     String [][] people = new String [15][5];
@@ -240,28 +239,22 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
     private void CourseAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseAverageActionPerformed
         
         //test 1 
-//        //varibale is equal and starts at 0
+        //varibale is equal and starts at 0
         int sum= 0;
         int total = 0;
-//        //for loop to grab each individual integer that is entered and listed
-        
-        
-     for(int r=0; r<students +1; r++){
-      for(int i =1; i<2; i++){
-           int n = Integer.parseInt(list.get(i));           
-             //Adds all the numbers and divides by the number of students entered
-               sum = sum += n;
-                 total = sum /2;
-       }
-     }
+        int added = 0;
+        //for loop to grab each individual integer that is entered and listed
+               
+        //for loop to grab each individual integer that is entered and listed
+        for (int i=0; i <=students; i++){
+            int test = Integer.parseInt(people[i][1]);
+             added = (sum += test);
+             //total = added/ students;
+      }
+        //output the total of all the odd numbers entered 
+        Output2.setText( "Test 1: " + added + ".");
      
-       for(int col = 0; col <=3; col++){
-           int test = Integer.parseInt(people);
-            sum += list[col][1];
-       }
-        //output the total of all the averages 
-        Output2.setText( "Test 1: " + total + ".");
-        
+//        
     }//GEN-LAST:event_CourseAverageActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -276,8 +269,6 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
             return;
         }
         
-        //creating varibles for the names of each student 
-
         //making sure the combindes names of each student will be added into the array in 
         //column 0 with the next availabile row at students
        people[students][0] = input1.getText() + " " + input2.getText();
@@ -295,6 +286,9 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
        list.add(people[students][3]);
        list.add(people[students][4]);
        
+        if (students <= 15){
+            students++;
+        }
     }//GEN-LAST:event_addActionPerformed
 
     private void ListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListActionPerformed
