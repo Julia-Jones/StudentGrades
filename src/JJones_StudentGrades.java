@@ -249,10 +249,10 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
         for (int i=0; i <=students; i++){
             int test = Integer.parseInt(people[i][1]);
              added = (sum += test);
-             //total = added/ students;
+             total = added/ students;
       }
         //output the total of all the odd numbers entered 
-        Output2.setText( "Test 1: " + added + ".");
+        Output2.setText( "Test 1: " + total + ".");
      
 //        
     }//GEN-LAST:event_CourseAverageActionPerformed
@@ -286,9 +286,6 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
        list.add(people[students][3]);
        list.add(people[students][4]);
        
-        if (students <= 15){
-            students++;
-        }
     }//GEN-LAST:event_addActionPerformed
 
     private void ListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListActionPerformed
@@ -302,6 +299,7 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
         for (int i=0;i<list.size();i++){
             a = (String) stepper.next();
             temp = temp + a +"\n";
+             students++;
         }
         Output1.setText(temp);
         
