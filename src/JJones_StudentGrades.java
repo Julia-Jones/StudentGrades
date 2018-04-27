@@ -128,9 +128,9 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(input1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel3)
@@ -230,7 +230,7 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
             //Adds all the marks numbers and dividing by 4
               total = (sum += n)/4;
       }
-        //output the total of all the odd numbers entered 
+        //output the average for the student entered 
         Output2.setText( name + " has an average of " + total + ".");
           
         
@@ -238,22 +238,39 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
 
     private void CourseAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseAverageActionPerformed
         
-        //test 1 
-        //varibale is equal and starts at 0
-        int sum= 0;
-        int total = 0;
-        int added = 0;
-        //for loop to grab each individual integer that is entered and listed
-               
-        //for loop to grab each individual integer that is entered and listed
-        for (int i=0; i <=students; i++){
-            int test = Integer.parseInt(people[i][1]);
-             added = (sum += test);
-             total = added/ students;
-      }
+//        //test 1 
+//        //varibale is equal and starts at 0
+//        int sum= 0;
+//        int total = 0;
+//        int added = 0;
+//        //for loop to grab each individual integer that is entered and listed
+//               
+//        //for loop to grab each individual integer that is entered and listed
+//        for (int i=0; i <=students; i++){
+//            int test = Integer.parseInt(people.get(people[i][1]));
+//             added = (sum += test);
+//             total = added/ students;
+//      }
+
+   
+        int counter=0;
+        int sum = 0;
+        for(int i=0;i<people.length;i++){
+            for(int j=1;j<5;j++){
+                int test = Integer.parseInt(people[i][j]);
+                sum = sum + test;
+                counter++;
+                
+            }
+          
+        }
+            int total = sum/counter; 
+                
+                Output2.setText( "Test 1: " + total + ".");    
+
+        
         //output the total of all the odd numbers entered 
-        Output2.setText( "Test 1: " + total + ".");
-     
+    
 //        
     }//GEN-LAST:event_CourseAverageActionPerformed
 
