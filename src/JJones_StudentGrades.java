@@ -240,37 +240,38 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
         
 //        //test 1 
 //        //varibale is equal and starts at 0
-//        int sum= 0;
-//        int total = 0;
-//        int added = 0;
-//        //for loop to grab each individual integer that is entered and listed
-//               
-//        //for loop to grab each individual integer that is entered and listed
-//        for (int i=0; i <=students; i++){
-//            int test = Integer.parseInt(people.get(people[i][1]));
-//             added = (sum += test);
-//             total = added/ students;
-//      }
-
-   
-        int counter=0;
-        int sum = 0;
-        for(int i=0;i<people.length;i++){
-            for(int j=1;j<5;j++){
-                int test = Integer.parseInt(people[i][j]);
-                sum = sum + test;
-                counter++;
-                
-            }
-          
-        }
-            int total = sum/counter; 
-                
-                Output2.setText( "Test 1: " + total + ".");    
-
+        int sum= 0;
+        int total = 0;
+        int added = 0;
+        //for loop to grab each individual integer that is entered and listed
+               
+        //for loop to grab each individual integer that is entered and listed
+        for (int i=0; i <=list.size()-1; i++){
+            int test = Integer.parseInt(people[i][1]);
+             added = (sum += test);
+             total = added/ students;
+      }
         
-        //output the total of all the odd numbers entered 
-    
+        Output1.setText("Test 1: " + total);
+   
+//        int counter=0;
+//        int sum = 0;
+//        for(int i=0;i<people.length;i++){
+//            for(int j=1;j<5;j++){
+//                int test = Integer.parseInt(people[i][j]);
+//                sum = sum + test;
+//                counter++;
+//                
+//            }
+//          
+//        }
+//            int total = sum/counter; 
+//                
+//                Output2.setText( "Test 1: " + total + ".");    
+//
+//        
+//        //output the total of all the odd numbers entered 
+//    
 //        
     }//GEN-LAST:event_CourseAverageActionPerformed
 
