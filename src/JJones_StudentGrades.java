@@ -252,7 +252,7 @@ public class JJones_StudentGrades extends javax.swing.JFrame {
              total = added/ students;
       }
         
-        Output1.setText("Test 1: " + total);
+        Output2.setText("Test 1: " + total);
    
 //        int counter=0;
 //        int sum = 0;
